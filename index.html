@@ -9,16 +9,14 @@
 </head>
 <body ng-app="appModule">
 <script>
-   var app = angular.module('appModule',['angular.embed.timepicker']);
-   app.controller('testController',['$scope',function($scope){
-       $scope.mytime = new Date(new Date().getTime() - 60*60*1000*10);
-       console.log($scope.mytime);
-   }])
+    var app = angular.module('appModule', ['angular.embed.timepicker']);
+    app.controller('testController', ['$scope', function($scope) {
+        $scope.mytime = new Date();
+    }])
 </script>
 <div class="test-content" ng-controller="testController">
     <timepicker ng-model="mytime" ng-change="changed()"
                 show-meridian="ismeridian"></timepicker>
-    --{{mytime}}--
 </div>
 </body>
 </html>

@@ -261,11 +261,7 @@ angular.module('angular.embed.timepicker', [])
                 // Call internally when we know that model is valid.
                 function refresh( keyboardChange ) {
                     makeValid();
-
-
-                    debugger;
                     ngModel.$setViewValue( new Date(selected) );
-
                     updateTemplate( keyboardChange );
                 }
 
