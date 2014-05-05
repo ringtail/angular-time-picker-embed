@@ -50,7 +50,7 @@ demo like this:
         }])
     </script>
     <div class="test-content" ng-controller="testController">
-        <timepicker ng-model="mytime" ng-change="changed()"
+        <timepicker ng-model="$parent.mytime" ng-change="changed()"
                     show-meridian="ismeridian"></timepicker>
     </div>
     </body>
