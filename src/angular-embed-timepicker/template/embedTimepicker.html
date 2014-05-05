@@ -3,11 +3,11 @@
     <tr class="text-center">
         <td><a ng-click="incrementHours()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a>
         </td>
-        <td>&nbsp;</td>
-        <td><a ng-click="incrementMinutes()" class="btn btn-link"><span
+        <td ng-hide="disableMinutes">&nbsp;</td>
+        <td ng-hide="disableMinutes"><a ng-click="incrementMinutes()" class="btn btn-link"><span
                 class="glyphicon glyphicon-chevron-up"></span></a></td>
-        <td>&nbsp;</td>
-        <td><a ng-click="incrementSeconds()"
+        <td ng-hide="disableSeconds">&nbsp;</td>
+        <td ng-hide="disableSeconds"><a ng-click="incrementSeconds()"
                class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
         <td ng-show="showMeridian"></td>
     </tr>
@@ -16,13 +16,14 @@
             <input type="text" ng-model="hours" ng-change="updateHours()" class="form-control text-center"
                    ng-mousewheel="incrementHours()" ng-readonly="readonlyInput" maxlength="2">
         </td>
-        <td>:</td>
-        <td style="width:50px;" class="form-group" ng-class="{'has-error': invalidMinutes}">
+        <td ng-hide="disableMinutes">:</td>
+        <td ng-hide="disableMinutes" style="width:50px;" class="form-group"
+            ng-class="{'has-error': invalidMinutes}">
             <input type="text" ng-model="minutes" ng-change="updateMinutes()" class="form-control text-center"
                    ng-readonly="readonlyInput" maxlength="2">
         </td>
-        <td>:</td>
-        <td style="width:50px;" class="form-group" ng-class="{'has-error': invalidSeconds}">
+        <td ng-hide="disableSeconds">:</td>
+        <td ng-hide="disableSeconds" style="width:50px;" class="form-group" ng-class="{'has-error': invalidSeconds}">
             <input type="text" ng-model="seconds" ng-change="updateSeconds()" class="form-control text-center"
                    ng-readonly="readonlyInput" maxlength="2">
         </td>
@@ -33,11 +34,12 @@
     <tr class="text-center">
         <td><a ng-click="decrementHours()" class="btn btn-link"><span
                 class="glyphicon glyphicon-chevron-down"></span></a></td>
-        <td>&nbsp;</td>
-        <td><a ng-click="decrementMinutes()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a>
+        <td ng-hide="disableMinutes">&nbsp;</td>
+        <td ng-hide="disableMinutes"><a ng-click="decrementMinutes()" class="btn btn-link"><span
+                class="glyphicon glyphicon-chevron-down"></span></a>
         </td>
-        <td>&nbsp;</td>
-        <td><a ng-click="decrementSeconds()"
+        <td ng-hide="disableSeconds">&nbsp;</td>
+        <td ng-hide="disableSeconds"><a ng-click="decrementSeconds()"
                class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a>
         <td ng-show="showMeridian"></td>
     </tr>

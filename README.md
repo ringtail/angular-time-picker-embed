@@ -22,9 +22,9 @@ All settings can be provided as attributes in the <timepicker> or globally confi
 
     mousewheel (Defaults: true) : Whether user can scroll inside the hours & minutes input to increase or decrease it's values.
 
-    hide-minute (Defaults: false) : Whether user can use minute input.
+    disable-minutes (Defaults: false) : Whether user can use minute input.
 
-    hide-second (Defaults: false): Whether user can use second input.
+    disable-seconds (Defaults: false): Whether user can use second input.
 
 ##Install from bower
 ```
