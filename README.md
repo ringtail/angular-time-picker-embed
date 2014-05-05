@@ -32,7 +32,7 @@ All settings can be provided as attributes in the <timepicker> or globally confi
 ```
 ##How to use
 demo like this:
-```javascript
+```
     <!doctype html>
     <html lang="en">
     <head>
