@@ -1,3 +1,4 @@
+
 // Create all modules and define dependencies to make sure they exist
 // and are loaded in the correct order to satisfy dependency injection
 // before all nested files are concatenated by Grunt
@@ -42,7 +43,7 @@ angular.module('angular.embed.timepicker', [])
                 disableSeconds:"=",
                 disableMinutes:"="
             },
-            templateUrl: 'src/angular-embed-timepicker/template/embedTimepicker.html',
+            templateUrl: 'template/angular-embed-timepicker/embedTimepicker.html',
             link: function(scope, element, attrs, ngModel) {
                 if ( !ngModel ) {
                     return; // do nothing if no ng-model
@@ -122,7 +123,7 @@ angular.module('angular.embed.timepicker', [])
                 }
 
 
-                function getSecondsFromTemplete(){
+                function getSecondsFromTemplate(){
                     var seconds = parseInt(scope.seconds ,10);
                     return ( seconds >= 0 && seconds < 60 ) ? seconds : undefined;
                 }
@@ -318,7 +319,7 @@ angular.module('angular.embed.timepicker', [])
                 };
 
                 scope.decrementSeconds = function(){
-                    addTime(secondStep);
+                    addTime( - secondStep);
                 };
 
 
@@ -327,4 +328,62 @@ angular.module('angular.embed.timepicker', [])
                 };
             }
         };
+
+
+
     }]);
+angular.module("template/angular-embed-timepicker/embedTimepicker.html", []).run(["$templateCache", function ($templateCache) {
+    $templateCache.put("template/angular-embed-timepicker/embedTimepicker.html",
+      "<table>" +
+        "<tbody>" +
+            "<tr class=\"text-center\">" +
+                "<td>" +
+                    "<a ng-click=\"incrementHours()\" class=\"btn btn-link\"><span class=\"glyphicon glyphicon-chevron-up\"></span></a>" +
+                "</td>" +
+                "<td ng-hide=\"disableMinutes\">&nbsp;</td>" +
+                "<td ng-hide=\"disableMinutes\">" +
+                    "<a ng-click=\"incrementMinutes()\" class=\"btn btn-link\">" +
+                        "<span class=\"glyphicon glyphicon-chevron-up\"></span>" +
+                    "</a>" +
+                "</td>" +
+                "<td ng-hide=\"disableSeconds\">&nbsp;</td>" +
+                "<td ng-hide=\"disableSeconds\">" +
+                   " <a ng-click=\"incrementSeconds()\" class=\"btn btn-link\"><span class=\"glyphicon glyphicon-chevron-up\"></span></a>" +
+                "</td>" +
+                "<td ng-show=\"showMeridian\"></td>" +
+            "</tr>" +
+            "<tr>" +
+                "<td style=\"width:50px;\" class=\"form-group\" ng-class=\"{'has-error': invalidHours}\">" +
+                    "<input type=\"text\" ng-model=\"hours\" ng-change=\"updateHours()\" class=\"form-control text-center\" ng-mousewheel=\"incrementHours()\" ng-readonly=\"readonlyInput\" maxlength=\"2\">" +
+     "</td>" +
+     "<td ng-hide=\"disableMinutes\">:</td>" +
+     "<td ng-hide=\"disableMinutes\" style=\"width:50px;\" class=\"form-group\" ng-class=\"{'has-error': invalidMinutes}\">" +
+     "<input type=\"text\" ng-model=\"minutes\" ng-change=\"updateMinutes()\" class=\"form-control text-center\" ng-readonly=\"readonlyInput\" maxlength=\"2\">" +
+     "</td>" +
+     "<td ng-hide=\"disableSeconds\">:</td>" +
+     "<td ng-hide=\"disableSeconds\" style=\"width:50px;\" class=\"form-group\" ng-class=\"{'has-error': invalidSeconds}\"><input type=\"text\" ng-model=\"seconds\" ng-change=\"updateSeconds()\" class=\"form-control text-center\" ng-readonly=\"readonlyInput\" maxlength=\"2\">" +
+     "</td>" +
+     "<td ng-show=\"showMeridian\">" +
+         "<button type=\"button\" class=\"btn btn-default text-center\" ng-click=\"toggleMeridian()\">{{meridian}}</button>" +
+     "</td>" +
+    "</tr>" +
+    "<tr class=\"text-center\">" +
+        "<td>" +
+            "<a ng-click=\"decrementHours()\" class=\"btn btn-link\">" +
+                "<span class=\"glyphicon glyphicon-chevron-down\"></span>" +
+            "</a>" +
+        "</td>" +
+        "<td ng-hide=\"disableMinutes\">&nbsp;</td>" +
+        "<td ng-hide=\"disableMinutes\">" +
+            "<a ng-click=\"decrementMinutes()\" class=\"btn btn-link\">" +
+                "<span class=\"glyphicon glyphicon-chevron-down\"></span>" +
+            "</a>" +
+        "</td>" +
+        "<td ng-hide=\"disableSeconds\">&nbsp;</td>" +
+        "<td ng-hide=\"disableSeconds\">" +
+            "<a ng-click=\"decrementSeconds()\" class=\"btn btn-link\"><span class=\"glyphicon glyphicon-chevron-down\"></span></a>" +
+                "<td ng-show=\"showMeridian\"></td>" +
+            "</tr>" +
+        "</tbody>" +
+    "</table>");
+}]);
